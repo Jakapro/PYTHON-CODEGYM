@@ -1,0 +1,25 @@
+import turtle
+
+# Nhập thông tin từ người dùng
+color_name = input("Nhập tên màu hoặc mã màu cần tô (ví dụ: red, blue, #ff5733): ")
+width = float(input("Nhập chiều rộng của hình chữ nhật: "))
+height = float(input("Nhập chiều dài của hình chữ nhật: "))
+
+# Thiết lập turtle
+t = turtle.Turtle()
+t.speed(1)
+t.color(color_name)  # Đặt màu cho viền
+t.fillcolor(color_name)  # Đặt màu tô bên trong
+t.begin_fill()
+
+# Vẽ hình chữ nhật
+for _ in range(2):
+    t.forward(width)
+    t.left(90)
+    t.forward(height)
+    t.left(90)
+
+t.end_fill()
+
+# Giữ cửa sổ mở
+turtle.done()
