@@ -1,0 +1,16 @@
+import turtle
+
+# Tạo đối tượng turtle
+t = turtle.Turtle()
+t.hideturtle()
+t.pencolor('red')
+
+# Hàm vẽ hình vuông với tham số w là độ dài cạnh
+def square_draw(w):
+for _ in range(4):
+t.forward(w)
+t.right(90)
+
+# Gọi hàm với các giá trị khác nhau
+square_draw(100)
+turtle.done()
