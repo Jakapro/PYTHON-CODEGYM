@@ -1,0 +1,93 @@
+danh_sach_hoc_sinh = []
+
+def them_hoc_sinh():
+    ten = input("Nhập tên học sinh: ")
+    tuoi = int(input("Nhập tuổi học sinh: "))
+    lop = input("Nhập lớp học sinh: ")
+
+    hoc_sinh = {
+        "ten": ten,
+        "tuoi": tuoi,
+        "lop": lop
+    }
+
+    danh_sach_hoc_sinh.append(hoc_sinh)
+    print("Đã thêm học sinh vào danh sách.")
+
+def hien_thi_danh_sach():
+    if not danh_sach_hoc_sinh:
+        print("Danh sách học sinh trống.")
+        return
+
+    print("Danh sách học sinh:")
+    for i, hoc_sinh in enumerate(danh_sach_hoc_sinh):
+        print(f"{i+1}. Tên: {hoc_sinh['ten']}, Tuổi: {hoc_sinh['tuoi']}, Lớp: {hoc_sinh['lop']}")
+
+def luu_danh_sach_vao_file(ten_file):
+    try:
+        with open(ten_file, "w") as f:
+            for hoc_sinh in danh_sach_hoc_sinh:
+                f.write(f"{hoc_sinh['ten']},{hoc_sinh['tuoi']},{hoc_sinh['lop']}\n")
+        print("Đã lưu danh sách học sinh vào file.")
+    except Exception as e:
+        print(f"Lỗi khi lưu file: {e}")
+
+def doc_danh_sach_tu_file(ten_file):
+    try:
+        with open(ten_file, "r") as f:
+            for line in f:
+                ten, tuoi, lop = line.strip().split(",")
+                hoc_sinh = {
+                    "ten": ten,
+                    "tuoi": int(tuoi),
+                    "lop": lop
+                }
+                danh_sach_hoc_sinh.append(hoc_sinh)
+        print("Đã đọc danh sách học sinh từ file.")
+    except FileNotFoundError:
+        print("File không tồn tại. Đã tạo danh sách học sinh trống.")
+    except Exception as e:
+        print(f"Lỗi khi đọc file: {e}")
+
+def xoa_hoc_sinh():
+    if not danh_sach_hoc_sinh:
+        print("Danh sách học sinh trống.")
+        return
+
+    ten_hoc_sinh_can_xoa = input("Nhập tên học sinh cần xóa: ")
+    for i, hoc_sinh in enumerate(danh_sach_hoc_sinh):
+        if hoc_sinh["ten"] == ten_hoc_sinh_can_xoa:
+            del danh_sach_hoc_sinh[i]
+            print("Đã xóa học sinh khỏi danh sách.")
+            return
+
+    print("Không tìm thấy học sinh trong danh sách.")
+
+def main():
+    while True:
+        print("\n--- Chương trình quản lý danh sách học sinh ---")
+        print("1. Thêm học sinh")
+        print("2. Hiển thị danh sách học sinh")
+        print("3. Lưu danh sách vào file")
+        print("4. Đọc danh sách từ file")
+        print("5. Xóa học sinh")
+        print("6. Thoát")
+
+        lua_chon = input("Nhập lựa chọn của bạn: ")
+
+        if lua_chon == "1":
+            them_hoc_sinh()
+        elif lua_chon == "2":
+            hien_thi_danh_sach()
+        elif lua_chon == "3":
+            ten_file = input("Nhập tên file để lưu: ")
+            luu_danh_sach_vao_file(ten_file)
+        elif lua_chon == "4":
+            ten_file = input("Nhập tên file để đọc: ")
+            doc_danh_sach_tu_file(ten_file)
+        elif lua_chon == "5":
+            xoa_hoc_sinh()
+        elif lua_chon == "6":
+            break
+        else:
+            print("Lựa chọn không hợp lệ. Vui lòng thử lại.")
