@@ -1,0 +1,55 @@
+def get_product(products, product_id):
+    """Hàm lấy thông tin sản phẩm theo ID"""
+    for product in products:
+        if product['id'] == product_id:
+            return product
+    return None
+
+def update_product(products, product_id, new_name):
+    """Hàm cập nhật tên sản phẩm"""
+    product = get_product(products, product_id)
+    if product:
+        product['name'] = new_name
+    else:
+        products[product_id] = {'id': product_id, 'name': new_name}
+
+def delete_product(products, product_id):
+    """Hàm xóa sản phẩm"""
+    if product_id in products:
+        del products[product_id]
+        print("Sản phẩm đã được xóa!")
+    else:
+        print("Không tìm thấy sản phẩm")
+
+# Danh sách sản phẩm (sử dụng dictionary để lưu trữ)
+products = {}
+
+while True:
+    print("\n--- Quản lý sản phẩm ---")
+    print("1. Thêm sản phẩm")
+    print("2. Cập nhật sản phẩm")
+    print("3. Xóa sản phẩm")
+    print("4. Hiển thị danh sách sản phẩm")
+    print("5. Thoát")
+
+    option = int(input("Chọn chức năng: "))
+
+    if option == 1:
+        product_id = int(input("Nhập ID sản phẩm: "))
+        product_name = input("Nhập tên sản phẩm: ")
+        update_product(products, product_id, product_name)
+    elif option == 2:
+        product_id = int(input("Nhập ID sản phẩm cần cập nhật: "))
+        new_name = input("Nhập tên mới: ")
+        update_product(products, product_id, new_name)
+    elif option == 3:
+        product_id = int(input("Nhập ID sản phẩm cần xóa: "))
+        delete_product(products, product_id)
+    elif option == 4:
+        print("Danh sách sản phẩm:")
+        for product_id, product_info in products.items():
+            print(f"ID: {product_id}, Tên: {product_info['name']}")
+    elif option == 5:
+        break
+    else:
+        print("Lựa chọn không hợp lệ!")
