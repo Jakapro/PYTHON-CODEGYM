@@ -1,0 +1,32 @@
+import turtle
+import math
+# Hàm vẽ hình tròn
+def draw_circle(radius):
+"""Vẽ hình tròn với bán kính radius."""
+t = turtle.Turtle()
+t.hideturtle()
+t.pencolor('blue')
+
+t.penup() # Nhấc bút lên để di chuyển đến vị trí bắt đầu
+t.goto(0, -radius) # Di chuyển đến điểm bắt đầu vẽ (chân tròn)
+t.pendown() # Hạ bút xuống để bắt đầu vẽ
+
+t.circle(radius) # Vẽ hình tròn với bán kính đã cho
+
+turtle.done() # Kết thúc và giữ cửa sổ vẽ mở
+
+# Hàm tính diện tích hình tròn
+def calculate_area(radius):
+"""Tính diện tích hình tròn với bán kính radius."""
+area = math.pi * radius ** 2
+return area
+
+# Nhập bán kính từ người dùng
+radius = float(input("Nhập bán kính hình tròn: "))
+
+# Gọi hàm vẽ hình tròn
+draw_circle(radius)
+
+# Gọi hàm tính diện tích và in kết quả
+area = calculate_area(radius)
+print(f"Diện tích hình tròn có bán kính {radius} là: {area:.2f}")
