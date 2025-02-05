@@ -1,0 +1,46 @@
+import datetime
+
+expenses = []
+
+def add_expense(name, amount, date):
+    expenses.append({"name": name, "amount": amount, "date": date})
+    print(f"Đã thêm chi tiêu: {name} - {amount} VND vào ngày {date}")
+
+def remove_expense(name):
+    for expense in expenses:
+        if expense["name"] == name:
+            expenses.remove(expense)
+            print(f"Đã xoá khoản chi tiêu: {name}")
+            return
+    print(f"Không tìm thấy khoản chi tiêu: {name}")
+
+def list_expenses():
+    if expenses:
+        print("Danh sách các khoản chi tiêu:")
+        for expense in expenses:
+            print(f"- {expense['name']}: {expense['amount']} VND (Ngày {expense['date']})")
+    else:
+        print("Danh sách chi tiêu trống.")
+
+def main():
+    while True:
+        print("\nChọn hành động: (1) Thêm, (2) Xoá, (3) Hiển thị, (4) Thoát")
+        choice = input("Nhập lựa chọn: ")
+        
+        if choice == "1":
+            name = input("Nhập tên khoản chi tiêu: ")
+            amount = float(input("Nhập số tiền: "))
+            date = input("Nhập ngày (YYYY-MM-DD, để trống là hôm nay): ")
+            if date == "":
+                date = datetime.date.today().strftime("%Y-%m-%d")
+            add_expense(name, amount, date)
+        elif choice == "2":
+            name = input("Nhập tên khoản chi tiêu cần xoá: ")
+            remove_expense(name)
+        elif choice == "3":
+            list_expenses()
+        elif choice == "4":
+            print("Thoát chương trình.")
+            break
+        else:
+            print("Lựa chọn không hợp lệ. Hãy thử lại!")
