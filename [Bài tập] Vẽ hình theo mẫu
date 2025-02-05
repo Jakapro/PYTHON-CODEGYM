@@ -1,0 +1,28 @@
+import turtle
+
+# Tạo cửa sổ vẽ
+screen = turtle.Screen()
+screen.setup(500, 500)
+
+# Tạo con rùa
+turtle = turtle.Turtle()
+turtle.speed(0)  # Tốc độ nhanh nhất
+
+# Các thông số
+ban_kinh_bat_dau = 10
+buoc_tang_ban_kinh = 5
+goc_quay = 10
+
+# Vẽ vòng xoắn ốc
+while True:
+    turtle.circle(ban_kinh_bat_dau)
+    ban_kinh_bat_dau += buoc_tang_ban_kinh
+    turtle.penup()
+    turtle.goto(0, 0)  # Quay về tâm để vẽ vòng tiếp theo
+    turtle.pendown()
+
+    # Kiểm tra điều kiện dừng (bạn có thể thay đổi điều kiện này)
+    if ban_kinh_bat_dau > 200:
+        break
+
+turtle.done()
