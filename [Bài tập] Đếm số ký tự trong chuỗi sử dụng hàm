@@ -1,5 +1,7 @@
+def dem(s):
+    rs = 0
+    for i in s:
+        rs+=1
+    return rs
 s = input()
-rs = 0
-for i in s:
-    rs += 1
-print(rs)
+print(dem(s))
