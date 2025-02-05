@@ -1,0 +1,17 @@
+def fizz_buzz(start, end):
+  for num in range(start, end + 1):
+    if num % 15 == 0:
+      print("FizzBuzz")
+    elif num % 3 == 0:
+      print("Fizz")
+    elif num % 5 == 0:
+      print("Buzz")
+    else:
+      print(num)
+
+# Nhập khoảng từ người dùng
+start = int(input("Nhập số bắt đầu: "))
+end = int(input("Nhập số kết thúc: "))
+
+# Gọi hàm để in kết quả
+fizz_buzz(start, end)
