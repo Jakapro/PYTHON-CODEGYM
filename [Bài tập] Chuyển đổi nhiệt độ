@@ -1,0 +1,10 @@
+def celsius_to_fahrenheit(celsius):
+    # Công thức chuyển từ Celsius sang Fahrenheit
+    return (celsius * 9/5) + 32
+
+# Nhập giá trị độ Celsius từ người dùng
+celsius = float(input("Nhập nhiệt độ (Celsius): "))
+
+# Tính và in ra giá trị Fahrenheit
+fahrenheit = celsius_to_fahrenheit(celsius)
+print(f"{celsius}°C tương đương với {fahrenheit}°F")
