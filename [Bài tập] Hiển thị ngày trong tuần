@@ -1,0 +1,13 @@
+def get_day_of_week(day_number):
+  days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  if 1 <= day_number <= 7:
+    return days_of_week[day_number - 1]
+  else:
+    return "error, out of range"
+
+# Nhập số từ người dùng
+day = int(input("Nhập số (1-7) tương ứng với ngày trong tuần: "))
+
+# Gọi hàm và in kết quả
+result = get_day_of_week(day)
+print(result)
