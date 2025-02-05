@@ -1,0 +1,11 @@
+# Nhập số tiền USD từ người dùng
+usd = float(input("Nhập số tiền USD cần đổi: "))
+
+# Nhập tỉ giá USD/VND
+exchange_rate = float(input("Nhập tỉ giá USD/VND: "))
+
+# Tính số tiền VND
+vnd = usd * exchange_rate
+
+# Hiển thị kết quả
+print(f"{usd} USD tương đương {vnd:,.2f} VND")
