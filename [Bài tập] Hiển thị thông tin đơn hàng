@@ -1,0 +1,19 @@
+def tinh_tien(tong_tien):
+  if tong_tien < 75:
+    giam_gia = 0
+  elif 75 <= tong_tien < 100:
+    giam_gia = 15
+  elif 100 <= tong_tien < 150:
+    giam_gia = 25
+  else:
+    giam_gia = 50
+  
+  tong_tien_sau_giam = tong_tien - giam_gia
+  return tong_tien_sau_giam
+
+# Nhập tổng tiền từ người dùng
+tong_tien = float(input("Vui lòng nhập tổng số tiền bạn đã chi: "))
+
+# Tính toán và in ra kết quả
+tong_tien_phai_tra = tinh_tien(tong_tien)
+print(f"Tổng số tiền bạn cần thanh toán là: {tong_tien_phai_tra}$")
