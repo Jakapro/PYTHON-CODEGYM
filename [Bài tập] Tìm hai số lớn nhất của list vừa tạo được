@@ -1,0 +1,7 @@
+numbers = [10, 45, 98, 23, 77, 65, 89]
+
+largest1 = max(numbers)  # Số lớn nhất
+numbers.remove(largest1)  # Xóa số lớn nhất khỏi list
+largest2 = max(numbers)  # Số lớn thứ hai
+
+print("Hai số lớn nhất là:", largest1, "và", largest2)
