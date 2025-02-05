@@ -1,0 +1,41 @@
+import turtle
+import random
+
+# Tạo cửa sổ vẽ
+screen = turtle.Screen()
+screen.setup(500, 500)
+
+# Tạo con rùa
+turtle = turtle.Turtle()
+turtle.shape('turtle')
+turtle.speed(0)  # Tốc độ nhanh nhất
+
+# Vẽ vòng tròn giới hạn
+turtle.penup()
+turtle.goto(0, -200)  # Di chuyển rùa đến vị trí bắt đầu vẽ
+turtle.pendown()
+turtle.circle(200)  # Vẽ vòng tròn bán kính 200
+
+# Đặt rùa về vị trí ban đầu
+turtle.penup()
+turtle.goto(0, 0)
+turtle.pendown()
+
+# Thiết lập các thông số
+so_lan_co_gang = 10
+buoc_di = 20
+
+# Bắt đầu vòng lặp
+for i in range(so_lan_co_gang):
+    # Chọn góc quay ngẫu nhiên
+    goc_quay = random.randint(0, 360)
+    turtle.setheading(goc_quay)  # Đặt hướng cho rùa
+    turtle.forward(buoc_di)
+
+    # Kiểm tra xem rùa có vượt quá giới hạn không
+    x, y = turtle.position()
+    if x**2 + y**2 > 200**2:  # Kiểm tra khoảng cách đến tâm vòng tròn
+        turtle.goto(0, 0)  # Đưa rùa về vị trí ban đầu
+        print("Rùa đã cố gắng thoát nhưng thất bại!")
+
+turtle.done()
