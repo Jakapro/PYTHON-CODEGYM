@@ -1,0 +1,52 @@
+import turtle
+
+def draw_rectangle(x, y, width, height, color):
+    """Vẽ hình chữ nhật tại tọa độ (x, y) với kích thước width x height và tô màu"""
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.fillcolor(color)
+    turtle.begin_fill()
+    for _ in range(2):
+        turtle.forward(width)
+        turtle.left(90)
+        turtle.forward(height)
+        turtle.left(90)
+    turtle.end_fill()
+
+def draw_triangle(x, y, size, color):
+    """Vẽ tam giác cân tại tọa độ (x, y) và tô màu"""
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.fillcolor(color)
+    turtle.begin_fill()
+    for _ in range(3):
+        turtle.forward(size)
+        turtle.left(120)
+    turtle.end_fill()
+
+def draw_house():
+    """Vẽ ngôi nhà với màu sắc"""
+    draw_rectangle(-100, -100, 200, 100, "#F5DEB3")  # Thân nhà màu nâu nhạt
+    draw_triangle(-100, 0, 200, "#8B0000")  # Mái nhà màu đỏ sẫm
+    draw_rectangle(-40, -100, 30, 50, "#654321")  # Cửa màu nâu đậm
+    draw_rectangle(40, -20, 20, 30, "lightblue")  # Cửa sổ màu xanh nhạt
+    draw_rectangle(50, 10, 10, 30, "gray")  # Ống khói màu xám
+
+def draw_tree(x, y):
+    """Vẽ cây với màu sắc"""
+    draw_rectangle(x + 15, y - 40, 20, 40, "brown")  # Thân cây màu nâu
+    draw_triangle(x, y, 50, "#ADFF2F")  # Tán cây trên cùng màu xanh nhạt
+    draw_triangle(x - 10, y - 30, 70, "#32CD32")  # Tán cây giữa màu xanh lá
+    draw_triangle(x - 20, y - 60, 90, "#006400")  # Tán cây dưới màu xanh đậm
+
+# Cấu hình ban đầu
+turtle.speed(3)
+draw_house()
+draw_tree(-200, -50)  # Cây bên trái
+draw_tree(150, 0)  # Cây bên phải
+
+# Kết thúc vẽ
+turtle.hideturtle()
+turtle.done()
