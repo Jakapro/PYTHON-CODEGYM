@@ -1,0 +1,57 @@
+import turtle
+import random
+
+# Khởi tạo cửa sổ vẽ và rùa
+screen = turtle.Screen()
+screen.setup(500, 500)
+turtle = turtle.Turtle()
+turtle.speed(0)
+
+# Các thông số cho hình xoắn ốc
+ban_kinh_bat_dau = 10
+buoc_tang_ban_kinh = 5
+goc_quay = 10
+mau_sac = ['red', 'blue', 'green', 'yellow', 'purple']
+
+# Hàm vẽ một đoạn của vòng xoắn ốc
+def ve_mot_doan_xoan_oc(mau):
+    turtle.color(mau)
+    turtle.circle(ban_kinh_bat_dau, steps=36)
+    global ban_kinh_bat_dau
+    ban_kinh_bat_dau += buoc_tang_ban_kinh
+    turtle.penup()
+    turtle.goto(0, 0)
+    turtle.pendown()
+
+# Hàm kiểm tra kết thúc trò chơi
+def kiem_tra_ket_thuc(tong):
+    return tong >= 21
+
+# Trò chơi 21 điểm kết hợp với vẽ hình xoắn ốc
+while True:
+    tong = 0
+    while tong < 21:
+        # Người chơi
+        so_nguoi_choi = int(input("Bạn chọn thêm bao nhiêu (1, 2, hoặc 3): "))
+        tong += so_nguoi_choi
+        ve_mot_doan_xoan_oc(mau_sac[tong % len(mau_sac)])
+
+        if kiem_tra_ket_thuc(tong):
+            print("Bạn thua!")
+            break
+
+        # Máy chơi
+        so_may_chon = random.randint(1, 3)
+        tong += so_may_chon
+        print(f"Máy chơi chọn: {so_may_chon}. Tổng hiện tại: {tong}")
+        ve_mot_doan_xoan_oc(mau_sac[tong % len(mau_sac)])
+        if kiem_tra_ket_thuc(tong):
+            print("Máy thua!")
+            break
+
+    # Hỏi người chơi có muốn chơi lại không
+    play_again = input("Bạn có muốn chơi lại không? (y/n): ")
+    if play_again.lower() != 'y':
+        break
+
+turtle.done()
