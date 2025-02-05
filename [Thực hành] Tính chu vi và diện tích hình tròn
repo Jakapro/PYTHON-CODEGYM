@@ -1,0 +1,21 @@
+import turtle
+import math
+
+# Nhập bán kính từ người dùng
+radius = float(input("Nhập bán kính của hình tròn: "))
+
+# Tính chu vi và diện tích
+chu_vi = 2 * math.pi * radius
+dien_tich = math.pi * radius ** 2
+
+# Hiển thị kết quả
+print(f"Chu vi hình tròn: {chu_vi:.2f}")
+print(f"Diện tích hình tròn: {dien_tich:.2f}")
+
+# Vẽ hình tròn bằng turtle
+t = turtle.Turtle()
+t.speed(1)
+t.circle(radius)  # Vẽ hình tròn với bán kính đã nhập
+
+# Giữ cửa sổ mở
+turtle.done()
