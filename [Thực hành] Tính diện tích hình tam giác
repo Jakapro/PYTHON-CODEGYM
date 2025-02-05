@@ -1,0 +1,11 @@
+def tinh_dien_tich_tam_giac(da_y, chieu_cao):
+    # Tính diện tích bằng công thức (1/2) * đáy * chiều cao
+    return 0.5 * da_y * chieu_cao
+
+# Nhập độ dài đáy và chiều cao từ người dùng
+da_y = float(input("Nhập độ dài đáy của tam giác: "))
+chieu_cao = float(input("Nhập chiều cao của tam giác: "))
+
+# Tính và in ra diện tích
+dien_tich = tinh_dien_tich_tam_giac(da_y, chieu_cao)
+print(f"Diện tích của tam giác là: {dien_tich} cm²")
