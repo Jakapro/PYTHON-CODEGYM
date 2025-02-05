@@ -1,0 +1,23 @@
+gadgets = ["Mobile", "Laptop", 100, "Camera", 310.28, "Speakers", 27.00, "Television", 1000, "Laptop Case", "Camera Lens"]
+
+# Tạo list chứa chuỗi và list chứa số
+strings = [item for item in gadgets if isinstance(item, str)]
+numbers = [item for item in gadgets if isinstance(item, (int, float))]
+
+# Sắp xếp list chuỗi theo thứ tự tăng dần
+strings_asc = sorted(strings)
+
+# Sắp xếp list chuỗi theo thứ tự giảm dần
+strings_desc = sorted(strings, reverse=True)
+
+# Sắp xếp list số theo thứ tự tăng dần
+numbers_asc = sorted(numbers)
+
+# Sắp xếp list số theo thứ tự giảm dần
+numbers_desc = sorted(numbers, reverse=True)
+
+# In kết quả
+print("List chuỗi (tăng dần):", strings_asc)
+print("List chuỗi (giảm dần):", strings_desc)
+print("List số (tăng dần):", numbers_asc)
+print("List số (giảm dần):", numbers_desc)
