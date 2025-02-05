@@ -1,0 +1,22 @@
+import turtle
+
+# Tạo cửa sổ vẽ
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
+
+# Tạo con rùa
+turtle = turtle.Turtle()
+turtle.pensize(3)  # Độ dày nét vẽ
+
+# Nhập độ dài mỗi nét vẽ và khoảng cách giữa các nét
+do_dai_net = int(input("Nhập độ dài mỗi nét vẽ: "))
+khoang_cach = int(input("Nhập khoảng cách giữa các nét: "))
+
+# Vẽ đường nét đứt
+for _ in range(10):  # Thay đổi số lần lặp để điều chỉnh độ dài đường đi
+    turtle.forward(do_dai_net)
+    turtle.penup()
+    turtle.forward(khoang_cach)
+    turtle.pendown()
+
+turtle.done()
