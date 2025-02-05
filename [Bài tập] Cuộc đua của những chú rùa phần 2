@@ -1,0 +1,67 @@
+import turtle
+import random
+import time
+import datetime
+
+# Định nghĩa rùa
+class TurtleRacer(turtle.Turtle):
+    def __init__(self, name, color, start_position):
+        super().__init__()
+        self.name = name
+        self.color(color)
+        self.penup()
+        self.goto(start_position)
+        self.pendown()
+        self.speed(0)  # Rùa di chuyển nhanh
+        self.time_taken = None
+
+    def move(self):
+        self.forward(random.randint(1, 10))  # Di chuyển ngẫu nhiên mỗi lần
+
+    def set_time(self, start_time):
+        self.time_taken = datetime.datetime.now() - start_time
+
+# Thiết lập cửa sổ vẽ
+screen = turtle.Screen()
+screen.bgcolor("white")
+screen.title("Cuộc đua rùa")
+
+# Khởi tạo các con rùa
+racer1 = TurtleRacer("Rùa 1", "red", (-200, 100))
+racer2 = TurtleRacer("Rùa 2", "blue", (-200, 50))
+racer3 = TurtleRacer("Rùa 3", "green", (-200, 0))
+
+# Vạch đích
+finish_line = 300
+
+# Bắt đầu cuộc đua
+def start_race():
+    start_time = datetime.datetime.now()  # Lấy thời gian bắt đầu cuộc đua
+    print("Cuộc đua bắt đầu!")
+    
+    # Liên tục di chuyển các con rùa cho đến khi có con rùa cán đích
+    while True:
+        racer1.move()
+        racer2.move()
+        racer3.move()
+
+        # Kiểm tra xem có con rùa nào cán đích
+        if racer1.xcor() >= finish_line:
+            racer1.set_time(start_time)
+            print(f"{racer1.name} thắng cuộc! Thời gian: {racer1.time_taken}")
+            break
+        elif racer2.xcor() >= finish_line:
+            racer2.set_time(start_time)
+            print(f"{racer2.name} thắng cuộc! Thời gian: {racer2.time_taken}")
+            break
+        elif racer3.xcor() >= finish_line:
+            racer3.set_time(start_time)
+            print(f"{racer3.name} thắng cuộc! Thời gian: {racer3.time_taken}")
+            break
+
+# Thêm điều khiển bắt đầu cuộc đua
+screen.onkey(start_race, "space")  # Nhấn phím Space để bắt đầu cuộc đua
+screen.listen()
+
+# Giữ cửa sổ vẽ mở
+screen.mainloop()
