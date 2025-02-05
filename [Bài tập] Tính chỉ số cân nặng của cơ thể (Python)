@@ -1,0 +1,27 @@
+def tinh_bmi(can_nang, chieu_cao):
+  if bmi < 16:
+    return "Gầy cấp độ III"
+  elif 16 <= bmi < 18.5:
+    return "Gầy cấp độ II"
+  elif 18.5 <= bmi < 25:
+    return "Bình thường"
+  elif 25 <= bmi < 30:
+    return "Thừa cân"
+  elif 30 <= bmi < 35:
+    return "Béo phì cấp độ I"
+  else:
+    return "Béo phì cấp độ II hoặc III"
+
+# Nhập liệu từ người dùng
+can_nang = float(input("Nhập cân nặng của bạn (kg): "))
+chieu_cao = float(input("Nhập chiều cao của bạn (m): "))
+
+# Tính toán BMI
+bmi = tinh_bmi(can_nang, chieu_cao)
+
+# Đánh giá tình trạng cơ thể
+tinh_trang = danh_gia_tinh_trang(bmi)
+
+# In kết quả
+print(f"Chỉ số BMI của bạn là: {bmi:.2f}")
+print(f"Tình trạng cơ thể của bạn: {tinh_trang}")
