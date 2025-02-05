@@ -1,0 +1,14 @@
+def ve_hinh_vuong(do_dai_canh):
+  for i in range(do_dai_canh):
+    for j in range(do_dai_canh):
+      print("*", end="")
+    print()
+
+# Nhập độ dài cạnh từ người dùng
+do_dai = int(input("Nhập độ dài cạnh của hình vuông: "))
+
+# Kiểm tra độ dài cạnh có hợp lệ không
+if do_dai > 0:
+  ve_hinh_vuong(do_dai)
+else:
+  print("Độ dài cạnh phải là số nguyên dương")
