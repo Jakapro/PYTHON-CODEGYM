@@ -1,0 +1,5 @@
+s = input()
+rs = 0
+for i in s:
+    rs += 1
+print(rs)
