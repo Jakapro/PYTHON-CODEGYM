@@ -1,0 +1,26 @@
+dictionary = {
+"apple": "quả táo",
+"banana": "quả chuối",
+"cat": "con mèo",
+"dog": "con chó",
+"elephant": "con voi",
+"fish": "con cá",
+"grape": "quả nho",
+"house": "ngôi nhà",
+"ice": "đá",
+"juice": "nước ép"
+}
+
+def translate_word(dictionary_db, word):
+if word in dictionary_db:
+return dictionary_db[word]
+else:
+return None
+
+input_word = input("Nhập từ cần tra cứu: ").lower()
+translated_word = translate_word(dictionary, input_word)
+
+if translated_word:
+print(f"{input_word} có nghĩa là: {translated_word}")
+else:
+print(f"Xin lỗi, từ '{input_word}' không có trong từ điển.")
