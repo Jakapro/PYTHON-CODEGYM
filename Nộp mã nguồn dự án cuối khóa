@@ -1,0 +1,107 @@
+school = []
+
+# input_ID
+def ID():
+    while True:
+        id = input("Vui lòng nhập mã học sinh (0->9): ")
+        if id.isdigit():
+            return id
+        print("Mã học sinh không hợp lệ. Vui lòng nhập lại!")
+
+# input_name
+def nhap_ten():
+    ten = input("Vui lòng nhập tên học sinh: ")
+    return ten.title()
+
+# input_class
+def lop():
+    return input("Vui lòng nhập vào lớp: ")
+
+# input_diem_trung_binh
+def diem_tb():
+    while True:
+        try:
+            tb = float(input("Vui lòng nhập vào điểm trung bình: "))
+            if 0 <= tb <= 10:
+                return tb
+            print("Điểm trung bình không hợp lệ (0->10). Vui lòng nhập lại!")
+        except ValueError:
+            print("Vui lòng nhập một số hợp lệ!")
+
+# Create
+def add():
+    print("---------- Thêm hồ sơ học sinh -----------")
+    id = ID()
+    if any(item["ID"] == id for item in school):
+        print("Hồ sơ học sinh đã tồn tại. Không thể thêm!")
+        return
+    
+    name = nhap_ten()
+    lop_hoc = lop()
+    diem = diem_tb()
+    school.append({"ID": id, "Name": name, "Class": lop_hoc, "Diem": diem})
+    print(f"Hồ sơ học sinh {id} đã được thêm thành công!")
+
+# Search
+def search_hs():
+    print("--------- Tìm kiếm hồ sơ học sinh ----------")
+    id = ID()
+    for item in school:
+        if item["ID"] == id:
+            print(f"Mã HS: {item['ID']}, Tên: {item['Name']}, Lớp: {item['Class']}, Điểm TB: {item['Diem']}")
+            return
+    print("Hồ sơ học sinh không tồn tại!")
+
+# Update
+def update_hs():
+    print("--------- Cập nhật hồ sơ học sinh ----------")
+    id = ID()
+    for item in school:
+        if item["ID"] == id:
+            print(f"Hồ sơ hiện tại: {item}")
+            item["Diem"] = diem_tb()
+            print("Cập nhật thành công!")
+            return
+    print("Hồ sơ học sinh không tồn tại!")
+
+# Delete
+def delete_hs():
+    print("--------- Xóa hồ sơ học sinh ----------")
+    id = ID()
+    for item in school:
+        if item["ID"] == id:
+            school.remove(item)
+            print("Xóa hồ sơ thành công!")
+            return
+    print("Hồ sơ học sinh không tồn tại!")
+
+# Run
+def run():
+    while True:
+        print("============ Quản Lý Học Sinh ===========")
+        print("0. Danh sách học sinh hiện có")
+        print("1. Tạo hồ sơ học sinh mới")
+        print("2. Tìm kiếm học sinh")
+        print("3. Cập nhật điểm trung bình")
+        print("4. Xóa hồ sơ học sinh")
+        print("5. Thoát")
+        print("=========================================")
+        try:
+            chon = int(input("Vui lòng nhập chức năng: "))
+            if chon == 0:
+                print("Danh sách học sinh:", school)
+            elif chon == 1:
+                add()
+            elif chon == 2:
+                search_hs()
+            elif chon == 3:
+                update_hs()
+            elif chon == 4:
+                delete_hs()
+            elif chon == 5:
+                break
+            else:
+                print("Chức năng không hợp lệ!")
+        except ValueError:
+            print("Vui lòng nhập một số hợp lệ!")
+run()
