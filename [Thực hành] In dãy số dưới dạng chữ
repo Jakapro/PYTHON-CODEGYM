@@ -1,0 +1,17 @@
+def so_to_chu(so):
+    # Một danh sách các chữ số
+    chu_so = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"]
+    
+    # Chuyển dãy số thành chữ
+    ket_qua = []
+    for digit in str(so):
+        ket_qua.append(chu_so[int(digit)])
+    
+    # Kết hợp các chữ lại thành một chuỗi
+    return " ".join(ket_qua)
+
+# Nhập dãy số từ người dùng
+so_nhap = input("Nhập vào một dãy số: ")
+
+# In kết quả dưới dạng chữ
+print(so_to_chu(so_nhap))
