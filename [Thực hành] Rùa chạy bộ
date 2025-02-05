@@ -1,0 +1,47 @@
+import turtle
+import random
+
+# Thiết lập cửa sổ màn hình
+screen = turtle.Screen()
+screen.title("Cuộc đua rùa")
+screen.bgcolor("white")
+
+# Nhập dự đoán của người dùng
+du_doan = screen.textinput("Đoán rùa", "Con rùa màu nào sẽ cán đích đầu tiên? (Nhập tên màu)")
+
+# Tạo 6 con rùa với các màu khác nhau
+colors = ["red", "blue", "green", "yellow", "purple", "orange"]
+turtles = []
+
+# Tạo các con rùa và đặt vị trí xuất phát
+for i in range(6):
+    new_turtle = turtle.Turtle()
+    new_turtle.shape("turtle")
+    new_turtle.color(colors[i])
+    new_turtle.penup()
+    new_turtle.goto(-200, 100 - (i * 40))  # Các con rùa xuất phát ở các vị trí khác nhau trên trục y
+    turtles.append(new_turtle)
+
+# Chạy đua với vận tốc ngẫu nhiên
+race_over = False
+while not race_over:
+    for t in turtles:
+        t.forward(random.randint(1, 10))  # Di chuyển mỗi con rùa với vận tốc ngẫu nhiên
+        if t.xcor() >= 200:  # Kiểm tra nếu con rùa đã cán đích
+            winner = t
+            race_over = True
+            break
+
+# Kiểm tra người dùng đoán đúng không
+if winner.color()[0] == du_doan:
+    result = "Chúc mừng bạn! Bạn đoán đúng."
+else:
+    result = f"Đáng tiếc, con rùa {winner.color()[0]} đã cán đích đầu tiên."
+
+# Hiển thị kết quả
+turtle.penup()
+turtle.goto(0, 0)
+turtle.write(result, align="center", font=("Arial", 16, "bold"))
+
+# Chờ người dùng click vào màn hình để kết thúc chương trình
+screen.exitonclick()
