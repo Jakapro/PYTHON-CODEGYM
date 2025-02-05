@@ -1,0 +1,23 @@
+import turtle
+
+# Tạo đối tượng turtle
+t = turtle.Turtle()
+t.hideturtle() # Ẩn con turtle khi vẽ
+t.pencolor('red') # Đặt màu bút vẽ là đỏ
+
+# Hàm vẽ hình đa giác đều
+def draw(n, width=100):
+"""Hàm vẽ hình đa giác đều
+n - số cạnh của đa giác đều,
+width - chiều dài của các cạnh
+"""
+# Tính góc trong của đa giác đều
+angle = (n - 2) * 180 / n
+for i in range(n):
+t.forward(width) # Vẽ một cạnh
+t.right(180 - angle) # Quay con turtle theo góc cần thiết để vẽ đa giác đều
+
+turtle.done() # Kết thúc và giữ cửa sổ vẽ mở
+
+# Gọi hàm để vẽ hình đa giác
+draw(6, 150)
