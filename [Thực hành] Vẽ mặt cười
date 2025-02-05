@@ -1,0 +1,41 @@
+import turtle
+
+def draw_circle(x, y, radius, color):
+    turtle.penup()
+    turtle.goto(x, y - radius)
+    turtle.pendown()
+    turtle.color(color)
+    turtle.begin_fill()
+    turtle.circle(radius)
+    turtle.end_fill()
+
+def draw_smiley(eye_size):
+    turtle.speed(3)
+    
+    # Vẽ khuôn mặt
+    draw_circle(0, 0, 100, "yellow")
+    
+    # Vẽ mắt trái
+    draw_circle(-40, 40, eye_size, "black")
+    
+    # Vẽ mắt phải
+    draw_circle(40, 40, eye_size, "black")
+    
+    # Vẽ mũi
+    draw_circle(0, 15, eye_size / 2, "black")
+    
+    # Vẽ miệng
+    turtle.penup()
+    turtle.goto(-40, -20)
+    turtle.pendown()
+    turtle.color("black")
+    turtle.width(3)
+    turtle.setheading(-60)
+    turtle.circle(40, 120)
+    
+    turtle.done()
+
+# Thay đổi kích thước mắt ở đây
+eye_size = 10
+
+draw_smiley(eye_size)
