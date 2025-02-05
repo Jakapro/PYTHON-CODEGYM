@@ -1,0 +1,14 @@
+def count_word_occurrences(text):
+num_words = {}
+text_list = text.split()
+
+for word in text_list:
+word = word.lower().strip(".,!?;:")
+num_words[word] = num_words.get(word, 0) + 1
+
+return num_words
+
+message = "Đây là một đoạn văn bản. Đây là một ví dụ để đếm số lần xuất hiện của từ trong văn bản. Văn bản có thể có nhiều từ lặp lại."
+
+word_counts = count_word_occurrences(message)
+print(word_counts)
