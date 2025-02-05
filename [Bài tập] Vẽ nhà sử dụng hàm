@@ -1,0 +1,36 @@
+import turtle
+
+# Hàm vẽ hình chữ nhật
+def draw_rectangle(x, y, width, height, color):
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.fillcolor(color)
+    turtle.begin_fill()
+    for _ in range(2):
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
+    turtle.end_fill()
+
+# Cấu hình ban đầu
+turtle.speed(3)
+
+# Vẽ thân nhà
+draw_rectangle(-100, 100, 200, 200, "lightblue")
+
+# Vẽ mái nhà (phần bên phải)
+draw_rectangle(100, 40, 100, 160, "gray")
+
+# Vẽ cửa ra vào
+draw_rectangle(120, -60, 40, 80, "steelblue")
+
+# Vẽ các cửa sổ
+window_positions = [(-80, 160), (0, 160), (-80, 60), (0, 60)]
+for x, y in window_positions:
+    draw_rectangle(x, y, 40, 40, "white")
+
+# Ẩn con trỏ và hiển thị
+turtle.hideturtle()
+turtle.done()
