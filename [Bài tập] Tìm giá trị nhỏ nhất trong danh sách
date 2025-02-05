@@ -1,0 +1,12 @@
+def find_minimum(arr):
+    if not arr:
+        return "Mảng rỗng!"
+    
+    min_value = arr[0]
+    for num in arr:
+        if num < min_value:
+            min_value = num
+    
+    return min_value
+arr = [3, 1, 7, 9, 2, 5]
+print("Giá trị nhỏ nhất trong mảng là:", find_minimum(arr))
